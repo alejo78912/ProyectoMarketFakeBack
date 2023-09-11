@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Alejandro.Service.AuthService;
+
 import com.Alejandro.models.Usuario;
+import com.Alejandro.repository.IUsuarioRepository;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -19,20 +20,16 @@ public class demoControllerAuth {
 
 	
 	@Autowired
-    private AuthService authService;
+    private IUsuarioRepository usuarioRepository;
+	
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Usuario usuario) {
-        // Realiza la autenticación utilizando el servicio AuthService
-        // (puedes personalizar esto según tus necesidades)
-        int isAuthenticated = authService.autenticar(usuario.getEmailUsuario(), usuario.getConstrasenia());
-
-        if (isAuthenticated == 1|| isAuthenticated == 2 || isAuthenticated==3) {
-            // Devuelve una respuesta exitosa si la autenticación es exitosa
-            return ResponseEntity.ok("Autenticación exitosa");
-        } else {
-            // Devuelve una respuesta de error en caso de autenticación fallida
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Autenticación fallida");
-        }
-    }
+	@PostMapping
+	public ResponseEntity<?> login(@RequestBody Usuario usuario) {
+	    Usuario usuarioEncontrado = usuarioRepository.findByEmailUsuario(usuario.getEmailUsuario());
+	    if (usuarioEncontrado != null && usuarioEncontrado.getConstrasenia().equals(usuario.getConstrasenia())) {
+	        return ResponseEntity.ok(usuarioEncontrado);
+	    } else {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	    }
+	}
 }
