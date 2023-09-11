@@ -2,14 +2,17 @@ package com.Alejandro.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 
 @Entity(name ="usuarios")
 public class Usuario {
 	
 	
 	@Id
-	@Column(name = "cedulaUsuario")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long cedulaUsuario;
 	
 	@Column(name = "nombreUsuario")
@@ -27,8 +30,11 @@ public class Usuario {
 	@Column(name = "telefonoUsuario")
 	private String telefonoUsuario;
 
+	@Column(name = "tipoUsuario")
+	private String tipoUsuario;
+
 	public Usuario(long cedulaUsuario, String nombreUsuario, String apellidoUsuario, String emailUsuario,
-			String constrasenia, String telefonoUsuario) {
+			String constrasenia, String telefonoUsuario, String tipoUsuario) {
 		super();
 		this.cedulaUsuario = cedulaUsuario;
 		this.nombreUsuario = nombreUsuario;
@@ -36,6 +42,7 @@ public class Usuario {
 		this.emailUsuario = emailUsuario;
 		this.constrasenia = constrasenia;
 		this.telefonoUsuario = telefonoUsuario;
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public Usuario() {
@@ -89,9 +96,16 @@ public class Usuario {
 
 	public void setTelefonoUsuario(String telefonoUsuario) {
 		this.telefonoUsuario = telefonoUsuario;
-	} 
-			
-	
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
 	
 	
 	

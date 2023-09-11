@@ -34,7 +34,7 @@ public class Venta {
 	private String telefono;
 	
 	@ManyToOne
-	@JoinColumn(name = "venta_usuario")
+	@JoinColumn(name = "cedulaCliente") 
 	Usuario usuario;
 
 	public Venta() {
@@ -93,14 +93,14 @@ public class Venta {
 		this.telefono = telefono;
 	}
 
-	public Usuario getUsuario() {
+	public Usuario getCliente() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setCliente(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	
 
 	

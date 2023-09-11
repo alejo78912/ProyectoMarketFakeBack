@@ -23,55 +23,56 @@ public class Informe {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@ManyToOne
-	@JoinColumn(name = "informe_empleado")
-	Empleado empleado;
+	 @ManyToOne
+	 @JoinColumn(name = "cedulaEmpleado")
+	 private Usuario empleado;
 
-	public Informe(long codInforme, String tipoInforme, String descripcion, Empleado empleado) {
-		super();
-		this.codInforme = codInforme;
-		this.tipoInforme = tipoInforme;
-		this.descripcion = descripcion;
-		this.empleado = empleado;
-	}
+		public Informe(long codInforme, String tipoInforme, String descripcion, Usuario empleado) {
+			super();
+			this.codInforme = codInforme;
+			this.tipoInforme = tipoInforme;
+			this.descripcion = descripcion;
+			this.empleado = empleado;
+		}
 
-	public Informe() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+		public Informe() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 
-	public long getCodInforme() {
-		return codInforme;
-	}
+		public long getCodInforme() {
+			return codInforme;
+		}
 
-	public void setCodInforme(long codInforme) {
-		this.codInforme = codInforme;
-	}
+		public void setCodInforme(long codInforme) {
+			this.codInforme = codInforme;
+		}
 
-	public String getTipoInforme() {
-		return tipoInforme;
-	}
+		public String getTipoInforme() {
+			return tipoInforme;
+		}
 
-	public void setTipoInforme(String tipoInforme) {
-		this.tipoInforme = tipoInforme;
-	}
+		public void setTipoInforme(String tipoInforme) {
+			this.tipoInforme = tipoInforme;
+		}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+		public String getDescripcion() {
+			return descripcion;
+		}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+		public void setDescripcion(String descripcion) {
+			this.descripcion = descripcion;
+		}
 
-	public Empleado getEmpleado() {
-		return empleado;
-	}
+		public Usuario getEmpleado() {
+			return empleado;
+		}
 
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
-	}
-	
-	
-	
+		public void setEmpleado(Usuario empleado) {
+			this.empleado = empleado;
+		}
+
+		
+
+	    
 }
