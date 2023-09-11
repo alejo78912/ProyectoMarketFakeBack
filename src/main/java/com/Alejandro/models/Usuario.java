@@ -32,6 +32,7 @@ public class Usuario {
 
 	@Column(name = "tipoUsuario")
 	private String tipoUsuario;
+	//HOLA
 
 	public Usuario(long cedulaUsuario, String nombreUsuario, String apellidoUsuario, String emailUsuario,
 			String constrasenia, String telefonoUsuario, String tipoUsuario) {
