@@ -13,7 +13,7 @@ public class AuthService {
 	 private IUsuarioRepository usuarioRepository;
 
 	 public int autenticar(String email, String contrasenia){
-	        Usuario usuario = usuarioRepository.findByLogin(email, contrasenia);
+	        Usuario usuario = usuarioRepository.findByCustomLoginQuery(email, contrasenia);
 	        if (usuario != null ) {
 	            
 	            if (usuario.getTipoUsuario().equals("Cliente")) {
