@@ -7,10 +7,4 @@ import com.Alejandro.models.Usuario;
 
 
 public interface IUsuarioRepository  extends JpaRepository<Usuario, Long>{
-
-
-	 
-    Usuario findByEmailUsuario(String emailUsuario);
-    
-	
 }

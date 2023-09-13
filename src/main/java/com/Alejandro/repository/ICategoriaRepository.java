@@ -6,6 +6,6 @@ import com.Alejandro.models.Categoria;
 
 
 
-public interface ICategoriaRepository  extends JpaRepository<Categoria, String>{
+public interface ICategoriaRepository  extends JpaRepository<Categoria, Long>{
 
 }
