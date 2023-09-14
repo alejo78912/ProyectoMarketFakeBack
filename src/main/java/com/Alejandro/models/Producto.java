@@ -1,7 +1,5 @@
 package com.Alejandro.models;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +13,6 @@ import lombok.Data;
 @Entity(name ="productos")
 public class Producto {
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codProducto")
@@ -23,18 +20,6 @@ public class Producto {
 	
 	@Column(name = "valor")
 	private int valor;
-	
-	@ManyToOne // Esta anotación indica una relación ManyToOne
-	@JoinColumn(name = "idCarrito") // Nombre de la columna que almacena la relación en la tabla de Producto
-	private Carrito carrito;
-	
-	@ManyToOne // Esta anotación indica una relación ManyToOne
-	@JoinColumn(name = "codVenta") // Nombre de la columna que almacena la relación en la tabla de Producto
-	private Venta venta;
-	
-	@ManyToOne // Esta anotación indica una relación ManyToOne
-	@JoinColumn(name = "codInventario") // Nombre de la columna que almacena la relación en la tabla de Producto
-	private Inventario inventario;
 	
 	@Column(name = "url_photo")
 	private String url_photo;
@@ -51,14 +36,25 @@ public class Producto {
 	
 	@Column(name = "descripcionProducto")
 	private String descripcionProducto;
-
+	
+	@ManyToOne // Esta anotación indica una relación ManyToOne
+	@JoinColumn(name = "idCarrito") // Nombre de la columna que almacena la relación en la tabla de Producto
+	private Carrito carrito;
+	
+	@ManyToOne // Esta anotación indica una relación ManyToOne
+	@JoinColumn(name = "codVenta") // Nombre de la columna que almacena la relación en la tabla de Producto
+	private Venta venta;
+	
+	@ManyToOne // Esta anotación indica una relación ManyToOne
+	@JoinColumn(name = "codInventario") // Nombre de la columna que almacena la relación en la tabla de Producto
+	private Inventario inventario;
+	
 	public Producto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Producto(long codProducto, int valor, String url_photo, int cantidadAVender, Categoria categoria,
-			String nombreProducto, String descripcionProducto) {
+			String nombreProducto, String descripcionProducto, Carrito carrito, Venta venta, Inventario inventario) {
 		super();
 		this.codProducto = codProducto;
 		this.valor = valor;
@@ -67,6 +63,9 @@ public class Producto {
 		this.categoria = categoria;
 		this.nombreProducto = nombreProducto;
 		this.descripcionProducto = descripcionProducto;
+		this.carrito = carrito;
+		this.venta = venta;
+		this.inventario = inventario;
 	}
 
 	public long getCodProducto() {
@@ -124,9 +123,42 @@ public class Producto {
 	public void setDescripcionProducto(String descripcionProducto) {
 		this.descripcionProducto = descripcionProducto;
 	}
-	
-	
+
+	public Carrito getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
+	}
+
+	public Venta getVenta() {
+		return venta;
+	}
+
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
+
+	public Inventario getInventario() {
+		return inventario;
+	}
+
+	public void setInventario(Inventario inventario) {
+		this.inventario = inventario;
+	}
 	
 	
 
+	
+	
+
+
+
+	
+	
+	
+	
+	
+	
 }

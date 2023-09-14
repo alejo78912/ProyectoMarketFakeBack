@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Alejandro.models.Categoria;
+import com.Alejandro.models.Usuario;
 import com.Alejandro.repository.ICategoriaRepository;
 
 
@@ -23,5 +24,11 @@ public class CategoriaService {
 	 public Categoria guardar(Categoria categoria) {
 	        return categoriaRepository.save(categoria);
 	    }
+	 
+	 public Categoria getCategoriaById(Long id) {
+	        return categoriaRepository.findById(id).orElse(null);
+	    }
+
+
 	
 }
