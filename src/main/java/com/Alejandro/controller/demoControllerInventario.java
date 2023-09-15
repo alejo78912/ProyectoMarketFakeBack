@@ -42,8 +42,10 @@ public class demoControllerInventario {
 	    }
 
 	    @PostMapping
-	    public ResponseEntity<Producto> crear(@RequestBody Producto producto) {
+	    public ResponseEntity<Producto> crear(@RequestBody Producto producto){
+	    	System.out.println(producto.getCategoria().getIdCategoria());
 	        return ResponseEntity.ok(inventarioService.guardar(producto));
+
 	    }
 
 	    @DeleteMapping("/{codProducto}")
