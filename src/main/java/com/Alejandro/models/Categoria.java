@@ -26,16 +26,12 @@ public class Categoria {
 	@Column(name = "nombreCategoria")
 	private String nombreCategoria;
 	
-	
-	@OneToMany(mappedBy="categoria")
-	private List<Producto> productos;
 
-
-	public Categoria(Long idCategoria, String nombreCategoria, List<Producto> productos) {
+	public Categoria(Long idCategoria, String nombreCategoria) {
 		super();
 		this.idCategoria = idCategoria;
 		this.nombreCategoria = nombreCategoria;
-		this.productos = productos;
+		
 	}
 
 
@@ -65,14 +61,7 @@ public class Categoria {
 	}
 
 
-	public List<Producto> getProductos() {
-		return productos;
-	}
-
-
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
-	}
+	
 
 	
 	
