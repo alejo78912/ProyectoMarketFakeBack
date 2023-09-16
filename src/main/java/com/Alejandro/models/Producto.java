@@ -28,7 +28,7 @@ public class Producto {
 	@Column(name = "cantidadAVender")
 	private int cantidadAVender;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "idCategoria")
 	Categoria categoria;
 	
@@ -51,23 +51,9 @@ public class Producto {
 	private Inventario inventario;
 	
 	public Producto() {
-		super();
+	
 	}
 
-	public Producto(long codProducto, int valor, String url_photo, int cantidadAVender, Categoria categoria,
-			String nombreProducto, String descripcionProducto, Carrito carrito, Venta venta, Inventario inventario) {
-		super();
-		this.codProducto = codProducto;
-		this.valor = valor;
-		this.url_photo = url_photo;
-		this.cantidadAVender = cantidadAVender;
-		this.categoria = categoria;
-		this.nombreProducto = nombreProducto;
-		this.descripcionProducto = descripcionProducto;
-		this.carrito = carrito;
-		this.venta = venta;
-		this.inventario = inventario;
-	}
 
 	public long getCodProducto() {
 		return codProducto;

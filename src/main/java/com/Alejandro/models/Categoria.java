@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-@Data
+
 @Entity(name ="categorias")
 public class Categoria {
 
@@ -26,18 +26,11 @@ public class Categoria {
 	@Column(name = "nombreCategoria")
 	private String nombreCategoria;
 	
-
-	public Categoria(Long idCategoria, String nombreCategoria) {
-		super();
-		this.idCategoria = idCategoria;
-		this.nombreCategoria = nombreCategoria;
-		
-	}
+	
 
 
 	public Categoria() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 
@@ -61,6 +54,11 @@ public class Categoria {
 	}
 
 
+
+
+	
+
+	
 	
 
 	

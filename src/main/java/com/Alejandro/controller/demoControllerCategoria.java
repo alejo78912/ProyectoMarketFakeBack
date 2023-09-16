@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Alejandro.Service.CategoriaService;
 import com.Alejandro.models.Categoria;
+import com.Alejandro.models.Producto;
 
 
 @RestController
@@ -23,7 +24,7 @@ public class demoControllerCategoria {
 
 	
 	 @Autowired
-	    private CategoriaService categoriaService;
+	  private CategoriaService categoriaService;
 
 	    @GetMapping
 	    public ResponseEntity<List<Categoria>> productos() {
@@ -35,14 +36,14 @@ public class demoControllerCategoria {
 	        return ResponseEntity.ok(categoriaService.guardar(categoria));
 	    }
 	    
-	    @GetMapping("/{id}")
-	    public ResponseEntity<Categoria> getCategoriaById(@PathVariable Long id) {
-	        Categoria categoria = categoriaService.getCategoriaById(id);
-	        if (categoria != null) {
-	            return ResponseEntity.ok(categoria);
-	        } else {
-	            return ResponseEntity.notFound().build();
-	        }
+	    
+	    
+	    @GetMapping("/products/{idCategoria}")
+	    public ResponseEntity<List<Producto>>getCategoriaById(@PathVariable Long idCategoria) {
+	    	System.out.println("hola");
+	    	  return ResponseEntity.ok(categoriaService.getProductsByCategory(idCategoria));
+	        
+	        
 	    }
 	    
 	    
