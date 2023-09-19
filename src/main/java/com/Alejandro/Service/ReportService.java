@@ -3,6 +3,6 @@ package com.Alejandro.Service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VentaService {
+public class ReportService {
 
 }

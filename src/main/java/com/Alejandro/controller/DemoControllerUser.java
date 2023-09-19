@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Alejandro.Service.UsuariService;
+import com.Alejandro.Service.UserService;
 
-import com.Alejandro.models.Usuario;
+import com.Alejandro.models.User;
 
 
 
@@ -26,27 +26,27 @@ import com.Alejandro.models.Usuario;
 @RestController
 @RequestMapping("/api/usuarios")
 @CrossOrigin(origins = "http://localhost:4200")
-public class demoControllerUsuario {
+public class DemoControllerUser {
 
 	
 	 @Autowired
-	 private UsuariService usuarioService;
+	 private UserService userService;
 
 	   @GetMapping
-	    public ResponseEntity<List<Usuario>> usuario() {
-	        return ResponseEntity.ok(usuarioService.usuarios());
+	    public ResponseEntity<List<User>> user() {
+	        return ResponseEntity.ok(userService.users());
 	    }
 
 	 
 
 	    @PostMapping
-	    public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario) {
-	        return ResponseEntity.ok(usuarioService.guardar(usuario));
+	    public ResponseEntity<User> create(@RequestBody User usuario) {
+	        return ResponseEntity.ok(userService.save(usuario));
 	    }
 
 	    @DeleteMapping("/{cedulaUsuario}")
-	    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-	    	usuarioService.eliminar(id);
+	    public ResponseEntity<Void> delete(@PathVariable Long id) {
+	    	userService.delete(id);
 	        return ResponseEntity.noContent().build();
 	    
 	    }

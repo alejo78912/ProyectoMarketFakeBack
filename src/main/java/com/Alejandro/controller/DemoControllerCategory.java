@@ -12,36 +12,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Alejandro.Service.CategoriaService;
-import com.Alejandro.models.Categoria;
-import com.Alejandro.models.Producto;
+import com.Alejandro.Service.CategoryService;
+import com.Alejandro.models.Category;
+import com.Alejandro.models.Product;
 
 
 @RestController
 @RequestMapping("/api/categorias")
 @CrossOrigin(origins = "http://localhost:4200")
-public class demoControllerCategoria {
+public class DemoControllerCategory {
 
 	
 	 @Autowired
-	  private CategoriaService categoriaService;
+	  private CategoryService categoryService;
 
 	    @GetMapping
-	    public ResponseEntity<List<Categoria>> productos() {
-	        return ResponseEntity.ok(categoriaService.categorias());
+	    public ResponseEntity<List<Category>> products() {
+	        return ResponseEntity.ok(categoryService.categories());
 	    }
 
 	    @PostMapping
-	    public ResponseEntity<Categoria> crear(@RequestBody Categoria categoria) {
-	        return ResponseEntity.ok(categoriaService.guardar(categoria));
+	    public ResponseEntity<Category> create(@RequestBody Category categoria) {
+	        return ResponseEntity.ok(categoryService.save(categoria));
 	    }
 	    
 	    
 	    
 	    @GetMapping("/products/{idCategoria}")
-	    public ResponseEntity<List<Producto>>getCategoriaById(@PathVariable Long idCategoria) {
+	    public ResponseEntity<List<Product>>getCategoriaById(@PathVariable Long idCategoria) {
 	    	System.out.println("hola");
-	    	  return ResponseEntity.ok(categoriaService.getProductsByCategory(idCategoria));
+	    	  return ResponseEntity.ok(categoryService.getProductsByCategory(idCategoria));
 	        
 	        
 	    }

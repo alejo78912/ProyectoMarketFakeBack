@@ -13,44 +13,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Alejandro.Service.InventarioService;
+import com.Alejandro.Service.InventoryService;
 
-import com.Alejandro.models.Producto;
+import com.Alejandro.models.Product;
 
 
 @RestController
 @RequestMapping("/api/inventarios")
 @CrossOrigin(origins = "http://localhost:4200")
-public class demoControllerInventario {
+public class DemoControllerInventory {
 	
 	 @Autowired
-	    private InventarioService inventarioService;
+	    private InventoryService inventoryService;
 
 	    @GetMapping
-	    public ResponseEntity<List<Producto>> productos() {
-	        return ResponseEntity.ok(inventarioService.productos());
+	    public ResponseEntity<List<Product>> products() {
+	        return ResponseEntity.ok(inventoryService.products());
 	    }
 
 	    @GetMapping("/{codProducto}")
-	    public ResponseEntity<Producto> editar(@PathVariable Producto producto) {
-	        Producto producto1 = inventarioService.editar(producto);
+	    public ResponseEntity<Product> edit(@PathVariable Product product) {
+	        Product producto1 = inventoryService.edit(product);
 	        if (producto1 != null) {
-	            return ResponseEntity.ok(producto);
+	            return ResponseEntity.ok(product);
 	        } else {
 	            return ResponseEntity.notFound().build();
 	        }
 	    }
 
 	    @PostMapping
-	    public ResponseEntity<Producto> crear(@RequestBody Producto producto){
-	    	System.out.println(producto.getCategoria().getIdCategoria());
-	        return ResponseEntity.ok(inventarioService.guardar(producto));
+	    public ResponseEntity<Product> create(@RequestBody Product product){
+	    	System.out.println(product.getCategory().getIdCategory());
+	        return ResponseEntity.ok(inventoryService.save(product));
 
 	    }
 
 	    @DeleteMapping("/{codProducto}")
-	    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-	    	inventarioService.eliminar(id);
+	    public ResponseEntity<Void> delete(@PathVariable Long id) {
+	    	inventoryService.delete(id);
 	        return ResponseEntity.noContent().build();
 	    }
 

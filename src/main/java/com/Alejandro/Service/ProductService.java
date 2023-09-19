@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Alejandro.models.Producto;
-import com.Alejandro.repository.IProductoRepository;
+import com.Alejandro.models.Product;
+import com.Alejandro.repository.IProductRepository;
 
 
 
 @Service
-public class ProductoService {
+public class ProductService {
 	
 	  @Autowired
-	  private IProductoRepository productoRepository;
+	  private IProductRepository productoRepository;
 	  
-	  public List<Producto> proctosMasvendidos() {
+	  public List<Product> mostSoldProducts() {
 	        return productoRepository.findAll();
 	    }
 
