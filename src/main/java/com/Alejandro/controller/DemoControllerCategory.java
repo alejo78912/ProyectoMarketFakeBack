@@ -38,9 +38,9 @@ public class DemoControllerCategory {
 	    
 	    
 	    
-	    @GetMapping("/products/{idCategoria}")
+	    @GetMapping("/{idCategoria}/products")
 	    public ResponseEntity<List<Product>>getCategoriaById(@PathVariable Long idCategoria) {
-	    	System.out.println("hola");
+	 
 	    	  return ResponseEntity.ok(categoryService.getProductsByCategory(idCategoria));
 	        
 	        
