@@ -43,6 +43,10 @@ public class Product {
 	private Cart cart;
 	
 	@ManyToOne // Esta anotación indica una relación ManyToOne
+	@JoinColumn(name = "idSupplier") // Nombre de la columna que almacena la relación en la tabla de Producto
+	private Supplier supplier;
+	
+	@ManyToOne // Esta anotación indica una relación ManyToOne
 	@JoinColumn(name = "idSale") // Nombre de la columna que almacena la relación en la tabla de Producto
 	private Sale sale;
 	
@@ -132,6 +136,14 @@ public class Product {
 
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 

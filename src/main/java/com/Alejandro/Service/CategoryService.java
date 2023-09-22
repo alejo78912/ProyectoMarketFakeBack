@@ -31,8 +31,12 @@ public class CategoryService {
 	        return categoryRepository.save(category);
 	    }
 	 
-	 public Category getCategoryById(Long id) {
-	        return categoryRepository.findById(id).orElse(null);
+	 public void delete(Long idCategory) {
+	         categoryRepository.deleteById(idCategory);
+	    }
+	 
+	 public Category getCategoryById(Long idCategory) {
+	        return categoryRepository.findById(idCategory).orElse(null);
 	    }
 	 
 	 public List<Product> getProductsByCategory(long idCategory){
