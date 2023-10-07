@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Alejandro.models.Category;
+import com.Alejandro.models.Product;
 import com.Alejandro.models.Supplier;
-
+import com.Alejandro.repository.IProductRepository;
 import com.Alejandro.repository.ISupplierRepository;
 
 
@@ -16,6 +18,9 @@ public class SupplierService {
 
     @Autowired
 	private ISupplierRepository supplierRepository;
+    
+    @Autowired
+	   private IProductRepository productRepository;
 	 
     public List<Supplier> suppliers() {
         return supplierRepository.findAll();
@@ -36,4 +41,12 @@ public class SupplierService {
 	    }
 	 
 	
+	 
+	 public List<Product> getProductsBySupplier(long idSupplier){
+		 Supplier supplier = new Supplier();
+		 supplier.setIdSupplier(idSupplier);
+		 List<Product> listaProductosSupplier =  productRepository.findBySupplier(supplier);
+		 return listaProductosSupplier;
+	    
+	 }
 }

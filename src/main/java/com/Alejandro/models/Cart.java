@@ -19,14 +19,12 @@ public class Cart {
 	private long idCart;
 	
 
-	@OneToMany(mappedBy="cart")
-	private List <Product> cartList;
 
 
 	public Cart(long idCart, List <Product> cartList ) {
 		super();
 		this.idCart = idCart;
-		this.cartList = cartList;
+		
 	}
 
 
@@ -46,15 +44,7 @@ public class Cart {
 	}
 
 
-	public List<Product> getCartList() {
-		return cartList;
-	}
-
-
-	public void setCartList(List<Product> cartList) {
-		this.cartList = cartList;
-	}
-
+	
 
 	
 	

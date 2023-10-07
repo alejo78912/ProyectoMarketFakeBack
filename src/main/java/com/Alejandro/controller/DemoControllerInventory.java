@@ -57,21 +57,30 @@ public class DemoControllerInventory {
 	    	inventoryService.delete(codProducto);
 	        return ResponseEntity.noContent().build();
 	    }
-	    
-	    @PutMapping("/{codProducto}/update")
-	    public ResponseEntity<Product> update(@PathVariable Long codProducto, @RequestBody Product product) {
-	    	Product existingProduct = productService.getById(codProducto);
+	    @PutMapping("/{idProduct}/update")
+	    public ResponseEntity<Product> update(@PathVariable Long idProduct, @RequestBody Product product) {
+	        Product existingProduct = productService.getById(idProduct);
 	        
 	        if (existingProduct != null) {
-	           
-	         
-	            Product updateProduct = inventoryService.save(existingProduct);
+	            // Actualiza los atributos del producto existente con los datos proporcionados en el cuerpo de la solicitud
+	            existingProduct.setPrice(product.getPrice());
+	            existingProduct.setUrl_photo(product.getUrl_photo());
+	            existingProduct.setQuantityToSell(product.getQuantityToSell());
+	            existingProduct.setCategory(product.getCategory());
+	            existingProduct.setProductName(product.getProductName());
+	            existingProduct.setProductDescription(product.getProductDescription());
+	            existingProduct.setSupplier(product.getSupplier());
 	            
-	            return ResponseEntity.ok(updateProduct);
+	            // Guarda el producto actualizado en la base de datos
+	            Product updatedProduct = inventoryService.save(existingProduct);
+	            
+	            // Devuelve una respuesta 200 OK con el producto actualizado en el cuerpo de la respuesta
+	            return ResponseEntity.ok(updatedProduct);
 	        } else {
-	            // Si no se encuentra el usuario, devuelve una respuesta 404 Not Found
+	            // Si el producto no se encuentra, devuelve una respuesta 404 Not Found
 	            return ResponseEntity.notFound().build();
 	        }
 	    }
+
 
 }

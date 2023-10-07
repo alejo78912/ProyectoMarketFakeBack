@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Alejandro.Service.SupplierService;
+import com.Alejandro.models.Product;
 import com.Alejandro.models.Supplier;
 
 
@@ -69,5 +70,14 @@ public class DemoControllerSupplier {
 	            // Si no se encuentra el usuario, devuelve una respuesta 404 Not Found
 	            return ResponseEntity.notFound().build();
 	        }
+	    }
+	    
+	    
+	    @GetMapping("/{idSupplier}/products")
+	    public ResponseEntity<List<Product>>getSuplierById(@PathVariable Long idSupplier) {
+	 
+	    	  return ResponseEntity.ok(supplierService.getProductsBySupplier(idSupplier));
+	        
+	        
 	    }
 }

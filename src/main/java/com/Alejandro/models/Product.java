@@ -146,6 +146,14 @@ public class Product {
 		this.supplier = supplier;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [idProduct=" + idProduct + ", price=" + price + ", url_photo=" + url_photo + ", quantityToSell="
+				+ quantityToSell + ", category=" + category + ", productName=" + productName + ", productDescription="
+				+ productDescription + ", cart=" + cart + ", supplier=" + supplier + ", sale=" + sale + ", inventory="
+				+ inventory + "]";
+	}
+
 
 	
 	
